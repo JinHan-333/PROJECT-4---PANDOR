@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --background: #b8b4ae;
+  --foreground: #1a1a1a;
+  --screen-bg: rgb(226, 222, 218);
+  --bezel-color: #c5c0b8;
+  --bezel-highlight: #d8d4cc;
+  --bezel-shadow: #a09c95;
+}
+
+@theme inline {
+  --color-scheme: light;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-screen-bg: var(--screen-bg);
+  --color-bezel: var(--bezel-color);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #b8b4ae;
+    --foreground: #1a1a1a;
+    --screen-bg: rgb(226, 222, 218);
+    color-scheme: light;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background: var(--background) !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-inter), 'Inter', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Override Tailwind dark mode preflight — force light scheme */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color: var(--foreground) !important;
+    background: var(--background) !important;
+    color-scheme: light !important;
+  }
+}
+
+/* Hide scrollbar inside monitor */
+.monitor-content::-webkit-scrollbar {
+  display: none;
+}
+.monitor-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Scan line text effect */
+.scan-line-text {
+  position: relative;
+  display: inline-block;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+}
+
+.scan-line-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom,
+    transparent 0px,
+    transparent 3px,
+    var(--screen-bg) 3px,
+    var(--screen-bg) 5px);
+  pointer-events: none;
+}
+
+/* Scan line text for dark sections */
+.scan-line-text-dark {
+  color: #ffffff;
+}
+.scan-line-text-dark::after {
+  background: repeating-linear-gradient(to bottom,
+    transparent 0px,
+    transparent 3px,
+    #111111 3px,
+    #111111 5px);
+}
+
+/* Full-width scan lines decoration */
+.scan-lines-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: repeating-linear-gradient(to bottom,
+    var(--foreground) 0px,
+    var(--foreground) 2px,
+    transparent 2px,
+    transparent 5px);
+  pointer-events: none;
+}
+
+/* Progress bar fill animation */
+@keyframes fillProgress {
+  0% { width: 0%; }
+  80% { width: 100%; }
+  100% { width: 100%; }
+}
+.progress-fill {
+  animation: fillProgress 2s ease-out forwards;
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.typing-cursor {
+  animation: blink 0.8s infinite;
+}
+
+/* Smooth enter key pulse */
+@keyframes pulse-enter {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.pulse-enter {
+  animation: pulse-enter 2s ease-in-out infinite;
+}
+
+/* Selection */
+::selection {
+  background: rgba(26, 26, 26, 0.15);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--foreground), transparent);
+  opacity: 0.08;
+}
+
+/* Nav styles for case study */
+.cs-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.cs-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4%;
+  pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+  .cs-nav-inner {
+    padding: 16px 8%;
+  }
+}
+
+/* Placeholder pulse */
+@keyframes placeholder-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
