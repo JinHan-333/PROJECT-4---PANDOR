@@ -10,7 +10,7 @@ export default function TeamPlaceholder({ name, context, dark = false }: TeamPla
   const bg = dark ? "bg-white/5" : "bg-black/5";
   const border = dark ? "border-white/10" : "border-foreground/10";
   const text = dark ? "text-white/40" : "text-foreground/40";
-  const textSub = dark ? "text-white/25" : "text-foreground/25";
+  const textSub = dark ? "text-white/40" : "text-foreground/40";
 
   return (
     <div

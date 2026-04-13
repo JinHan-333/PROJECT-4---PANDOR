@@ -5,6 +5,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import ScanLineText from "./ScanLineText";
 import MediaPlaceholder from "./MediaPlaceholder";
 import TeamPlaceholder from "./TeamPlaceholder";
+import MemberAccordion from "./MemberAccordion";
+import LazyVideo from "./LazyVideo";
 
 interface Props {
   scrollContainerRef: React.RefObject<HTMLDivElement | null>;
@@ -66,7 +68,7 @@ function Section({
 /* ─── Section label ─── */
 function Label({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-6 ${dark ? "text-white/30" : "text-foreground/30"}`}>
+    <p className={`text-[10px] font-mono tracking-[0.3em] uppercase mb-6 ${dark ? "text-white/45" : "text-foreground/40"}`}>
       {children}
     </p>
   );
@@ -93,7 +95,7 @@ function Lead({ children, dark = false }: { children: React.ReactNode; dark?: bo
 /* ─── Body paragraph ─── */
 function Body({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={`text-[clamp(14px,1.2vw,15.5px)] leading-[1.85] mb-5 ${dark ? "text-white/55" : "text-foreground/60"}`}>
+    <p className={`text-[clamp(14px,1.2vw,15.5px)] leading-[1.85] mb-5 ${dark ? "text-white/70" : "text-foreground/65"}`}>
       {children}
     </p>
   );
@@ -102,7 +104,7 @@ function Body({ children, dark = false }: { children: React.ReactNode; dark?: bo
 /* ─── Subsection label ─── */
 function Sub({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <h3 className={`text-[11px] font-mono tracking-[0.2em] uppercase mt-12 mb-5 ${dark ? "text-white/35" : "text-foreground/35"}`}>
+    <h3 className={`text-[11px] font-mono tracking-[0.2em] uppercase mt-12 mb-5 ${dark ? "text-white/55" : "text-foreground/50"}`}>
       {children}
     </h3>
   );
@@ -118,7 +120,7 @@ function Bullet({ children, dark = false }: { children: React.ReactNode; dark?: 
   return (
     <li className="flex items-start gap-3 mb-2.5">
       <span className={`w-[5px] h-[5px] rounded-full mt-[7px] flex-shrink-0 ${dark ? "bg-white/20" : "bg-foreground/20"}`} />
-      <span className={`text-[clamp(13px,1.15vw,15px)] leading-[1.7] ${dark ? "text-white/55" : "text-foreground/60"}`}>
+      <span className={`text-[clamp(13px,1.15vw,15px)] leading-[1.7] ${dark ? "text-white/70" : "text-foreground/65"}`}>
         {children}
       </span>
     </li>
@@ -150,7 +152,7 @@ function InfoCard({
     <div
       className={`border rounded-md p-5 sm:p-6 ${dark ? "border-white/8 bg-white/[0.03]" : "border-foreground/6 bg-foreground/[0.02]"}`}
     >
-      <p className={`text-[10px] font-mono tracking-[0.25em] uppercase mb-4 ${dark ? "text-white/25" : "text-foreground/25"}`}>
+      <p className={`text-[10px] font-mono tracking-[0.25em] uppercase mb-4 ${dark ? "text-white/45" : "text-foreground/40"}`}>
         {title}
       </p>
       {children}
@@ -212,7 +214,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
               ["Institution", "Sheridan College"],
             ].map(([k, v]) => (
               <div key={k} className="flex flex-col gap-0.5">
-                <span className="text-[9px] font-mono tracking-[0.25em] text-foreground/25 uppercase">
+                <span className="text-[9px] font-mono tracking-[0.25em] text-foreground/40 uppercase">
                   {k}
                 </span>
                 <span className="text-[12px] font-mono text-foreground/55">
@@ -312,75 +314,121 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
       <Section>
         <Reveal container={scrollContainerRef}>
           <Label>02 — Role &amp; Contributions</Label>
-          <Heading>Creative Leadership &amp; Project Direction</Heading>
-          <Lead>
-            Within the course project, Sandra took on the role of{" "}
-            <strong className="text-foreground/85">
-              team lead and project manager
-            </strong>
-            , helping shape both the direction of the concept and the structure
-            needed to move it forward. Her contribution sat at the intersection
-            of{" "}
-            <strong className="text-foreground/85">
-              creative leadership, narrative development, and systems thinking
-            </strong>
-            .
-          </Lead>
+          <Heading>Team Roles &amp; Responsibilities</Heading>
         </Reveal>
 
         <Reveal container={scrollContainerRef}>
-          <Sub>Course Project Role</Sub>
-          <Body>
-            As a student on the project, Sandra&apos;s responsibilities
-            included:
-          </Body>
-          <ul className="mb-6 list-none p-0">
-            <Bullet>Leading the overall project direction</Bullet>
-            <Bullet>Organizing the <strong className="text-foreground/85">Gantt chart</strong> and <strong className="text-foreground/85">RACI framework</strong></Bullet>
-            <Bullet>Managing timelines, deliverables, and team coordination</Bullet>
-            <Bullet>Developing the core <strong className="text-foreground/85">concept</strong> that the team ultimately selected</Bullet>
-            <Bullet>Shaping the <strong className="text-foreground/85">experience design</strong> and <strong className="text-foreground/85">narrative structure</strong></Bullet>
-            <Bullet>Ensuring <strong className="text-foreground/85">system integration</strong> across all platforms</Bullet>
-            <Bullet>Leading the <strong className="text-foreground/85">Instagram narrative layer</strong> as part of the transmedia experience</Bullet>
-          </ul>
-          <Body>
-            A major part of this role was making sure the project felt cohesive
-            across poster, social, website, chatbot, AR, and VR, rather than as
-            separate outputs.
-          </Body>
-        </Reveal>
+          <div className="flex flex-col gap-3">
 
-        <Reveal container={scrollContainerRef}>
-          <Sub>Helix Storyworks Role</Sub>
-          <Body>
-            Within the pseudo production company, Helix Storyworks, Sandra&apos;s
-            role was framed as{" "}
-            <strong className="text-foreground/85">
-              Creative Director and Executive Producer
-            </strong>
-            . In that context, she was responsible for:
-          </Body>
-          <ul className="mb-6 list-none p-0">
-            <Bullet>Overseeing the overall <strong className="text-foreground/85">creative vision</strong></Bullet>
-            <Bullet>Guiding the <strong className="text-foreground/85">narrative direction</strong> of the project</Bullet>
-            <Bullet>Coordinating and following up on team progress</Bullet>
-            <Bullet>Managing <strong className="text-foreground/85">scope, production flow, and timelines</strong></Bullet>
-            <Bullet>Supporting decision-making across major deliverables</Bullet>
-            <Bullet>Ensuring alignment and consistency across the final experience</Bullet>
-          </ul>
-          <Body>
-            This dual role allowed her to contribute both as a student designer
-            within the academic project and as the central creative and
-            organizational lead within the studio framework built around it.
-          </Body>
-        </Reveal>
+            <MemberAccordion name="Sandra" role="Creative Director & Executive Producer">
+              <Body>
+                Within the course project, Sandra took on the role of <strong className="text-foreground/85">team lead and project manager</strong>, helping shape both the direction of the concept and the structure needed to move it forward. Her contribution sat at the intersection of <strong className="text-foreground/85">creative leadership, narrative development, and systems thinking</strong>.
+              </Body>
 
-        <Reveal container={scrollContainerRef} className="mt-12">
-          <Label>Team Contributions</Label>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <TeamPlaceholder name="Zora" context="Role & Contributions" />
-            <TeamPlaceholder name="Jingwen" context="Role & Contributions" />
-            <TeamPlaceholder name="Yamin" context="Role & Contributions" />
+              <Sub>Course Project Role</Sub>
+              <Body>As a student on the project, Sandra&apos;s responsibilities included:</Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Leading the overall project direction</Bullet>
+                <Bullet>Organizing the <strong className="text-foreground/85">Gantt chart</strong> and <strong className="text-foreground/85">RACI framework</strong></Bullet>
+                <Bullet>Managing timelines, deliverables, and team coordination</Bullet>
+                <Bullet>Developing the core <strong className="text-foreground/85">concept</strong> that the team ultimately selected</Bullet>
+                <Bullet>Shaping the <strong className="text-foreground/85">experience design</strong> and <strong className="text-foreground/85">narrative structure</strong></Bullet>
+                <Bullet>Ensuring <strong className="text-foreground/85">system integration</strong> across all platforms</Bullet>
+                <Bullet>Leading the <strong className="text-foreground/85">Instagram narrative layer</strong> as part of the transmedia experience</Bullet>
+              </ul>
+              <Body>
+                A major part of this role was making sure the project felt cohesive across poster, social, website, chatbot, AR, and VR, rather than as separate outputs.
+              </Body>
+
+              <Sub>Helix Storyworks Role</Sub>
+              <Body>
+                Within the pseudo production company, Helix Storyworks, Sandra&apos;s role was framed as <strong className="text-foreground/85">Creative Director and Executive Producer</strong>. In that context, she was responsible for:
+              </Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Overseeing the overall <strong className="text-foreground/85">creative vision</strong></Bullet>
+                <Bullet>Guiding the <strong className="text-foreground/85">narrative direction</strong> of the project</Bullet>
+                <Bullet>Coordinating and following up on team progress</Bullet>
+                <Bullet>Managing <strong className="text-foreground/85">scope, production flow, and timelines</strong></Bullet>
+                <Bullet>Supporting decision-making across major deliverables</Bullet>
+                <Bullet>Ensuring alignment and consistency across the final experience</Bullet>
+              </ul>
+              <Body>
+                This dual role allowed her to contribute both as a student designer within the academic project and as the central creative and organizational lead within the studio framework built around it.
+              </Body>
+            </MemberAccordion>
+
+            <MemberAccordion name="Zora" role="Role & Contributions">
+              <div className="py-4 flex items-center justify-center min-h-[100px]">
+                <span className="text-[12px] font-mono text-foreground/30">insert Zora</span>
+              </div>
+            </MemberAccordion>
+
+            <MemberAccordion name="Jingwen Han" role="Digital Experience Designer & Web Developer">
+              <Body>
+                Within the course project, Jingwen took on responsibility for the <strong className="text-foreground/85">digital narrative platforms</strong>, helping translate Pandora.Protocol into interactive web-based experiences. Her contribution sat at the intersection of <strong className="text-foreground/85">interface design, digital storytelling, and platform integration</strong>.
+              </Body>
+
+              <Sub>Course Project Role</Sub>
+              <Body>As a student on the project, Jingwen&apos;s responsibilities included:</Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Designing and developing the <strong className="text-foreground/85">website</strong> as a key digital entry point</Bullet>
+                <Bullet>Building the <strong className="text-foreground/85">chatbot experience</strong> as an interactive narrative layer</Bullet>
+                <Bullet>Structuring the <strong className="text-foreground/85">webpage layout and interface flow</strong></Bullet>
+                <Bullet>Developing the <strong className="text-foreground/85">geolocation component</strong> within the digital experience</Bullet>
+                <Bullet>Supporting the integration of narrative content into web-based formats</Bullet>
+                <Bullet>Coordinating, integrating, and updating content for the <strong className="text-foreground/85">Project 4 case study website</strong></Bullet>
+                <Bullet>Refining <strong className="text-foreground/85">interaction cues, navigation, and visual hierarchy</strong> across the digital platforms</Bullet>
+              </ul>
+              <Body>
+                A major part of her role was making sure the website, chatbot, webpage, and geolocation layer felt connected as part of the larger Pandora.Protocol system, rather than as separate digital outputs.
+              </Body>
+
+              <Sub>Helix Storyworks Role</Sub>
+              <Body>
+                Within the pseudo production company, Helix Storyworks, Jingwen&apos;s role was framed as <strong className="text-foreground/85">Digital Experience Designer and Web Developer</strong>. In that context, she was responsible for:
+              </Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Translating narrative ideas into <strong className="text-foreground/85">digital interactions</strong></Bullet>
+                <Bullet>Designing and building the project&apos;s web-based touchpoints</Bullet>
+                <Bullet>Supporting the technical development of the <strong className="text-foreground/85">chatbot and webpage</strong></Bullet>
+                <Bullet>Integrating geolocation as part of the immersive digital layer</Bullet>
+                <Bullet>Maintaining consistency between digital platforms and the overall project direction</Bullet>
+                <Bullet>Helping shape how users <strong className="text-foreground/85">navigate and interpret</strong> the digital side of the experience</Bullet>
+                <Bullet>Helping manage the project&apos;s digital case study website</Bullet>
+              </ul>
+              <Body>
+                This dual role allowed her to contribute both as a student designer within the academic project and as the team member responsible for shaping the project&apos;s core digital platforms.
+              </Body>
+            </MemberAccordion>
+
+            <MemberAccordion name="Yamin Cai" role="Technical Lead, AR & VR">
+              <Body>
+                Yamin Cai served as the <strong className="text-foreground/85">sole technical lead for both the AR and VR components</strong> of Pandora.Protocol, responsible for the full pipeline from concept to final deployment on the exhibition floor.
+              </Body>
+
+              <Sub>AR Responsibilities</Sub>
+              <Body>On the AR side, Yamin&apos;s responsibilities included:</Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Designing and building the entire <strong className="text-foreground/85">3D architectural model</strong> of the school building in Unity from scratch</Bullet>
+                <Bullet>Handling all <strong className="text-foreground/85">room layout, furniture placement, UV mapping, and texture baking</strong> for every object</Bullet>
+                <Bullet>Conceiving and implementing the <strong className="text-foreground/85">two-stage QR code system</strong> (sticker redirects to GitHub, GitHub loads the AR model) independently</Bullet>
+                <Bullet>Solving the constraint of <strong className="text-foreground/85">no dedicated app</strong></Bullet>
+                <Bullet>Handling all <strong className="text-foreground/85">version compatibility issues, package upgrades, and debugging</strong> solo</Bullet>
+              </ul>
+
+              <Sub>VR Responsibilities</Sub>
+              <Body>On the VR side, Yamin&apos;s responsibilities included:</Body>
+              <ul className="mb-2 list-none p-0">
+                <Bullet>Writing the <strong className="text-foreground/85">conceptual direction</strong> — an environment with no physical objects, only abstract data</Bullet>
+                <Bullet>Building and rendering all four <strong className="text-foreground/85">FX scenes in Houdini</strong> (SC001 rain, SC001+SC002 starburst, SC002 warp, SC004+SC005 black hole) from simulation through final export</Bullet>
+                <Bullet>Writing the <strong className="text-foreground/85">Unity FXVideoPlayer script</strong> and additive blending setup from scratch</Bullet>
+                <Bullet>Independently pivoting to a <strong className="text-foreground/85">WebXR solution</strong> when native Android packaging failed</Bullet>
+                <Bullet>Handling all <strong className="text-foreground/85">GitHub Pages deployment</strong></Bullet>
+                <Bullet>Resolving the <strong className="text-foreground/85">Quest 2 developer mode authorization</strong> issue with school IT</Bullet>
+                <Bullet>Debugging the black screen WebXR render loop and delivering a <strong className="text-foreground/85">fully working immersive VR experience</strong> for exhibition day</Bullet>
+              </ul>
+            </MemberAccordion>
+
           </div>
         </Reveal>
       </Section>
@@ -483,105 +531,266 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
       <Section dark>
         <Reveal container={scrollContainerRef}>
           <Label dark>04 — Design Approach</Label>
-          <h2 className="text-[clamp(22px,3vw,36px)] font-semibold tracking-tight leading-tight mb-4 text-white/90">
-            Restraint, Ambiguity &amp; Coherence
-          </h2>
-          <p className="text-[clamp(15px,1.5vw,18px)] leading-[1.7] mb-10 text-white/55">
+          <Heading dark>Design Approach</Heading>
+          <Lead dark>
             The design approach for this project focused on building a{" "}
             <strong className="text-white/85">cohesive transmedia system</strong>{" "}
             where each platform could function independently while still
             reinforcing a larger conceptual and aesthetic framework.
-          </p>
-        </Reveal>
-
-        <Reveal container={scrollContainerRef}>
+          </Lead>
           <Body dark>
             Rather than approaching the work as a set of separate deliverables,
             the team treated the project as an interconnected design process —
             one that required consistency in tone, symbolism, pacing, and user
             perception across physical, digital, and immersive touchpoints.
           </Body>
-
-          <Sub dark>Visual Direction</Sub>
-          <Body dark>
-            A key part of this direction was shaped through Sandra&apos;s role in
-            defining the project&apos;s{" "}
-            <strong className="text-white/85">
-              experience logic, narrative cohesion, and visual language
-            </strong>
-            . In the early stages, more literal visual directions were
-            considered, including a direct &ldquo;Greek meets cyberpunk&rdquo;
-            interpretation. However, that approach was ultimately set aside in
-            favor of something more restrained, atmospheric, and
-            psychologically charged.
-          </Body>
-          <Body dark>
-            The project moved toward a cinematic visual tone influenced by
-            controlled tension, ambiguity, and subtle unease — less about
-            obvious world-building and more about how unfamiliar systems feel
-            when they are first encountered.
-          </Body>
-
-          {/* Instagram Layer — text + placeholder integrated as one block */}
-          <Sub dark>The Instagram Layer</Sub>
-          <div className="border border-white/8 rounded-md p-6 sm:p-8 mb-6 bg-white/[0.02]">
-            <Body dark>
-              This approach became especially clear in the development of the
-              Instagram{" "}
-              <span className="inline-flex items-center gap-1.5 border-b border-dashed border-white/25 pb-0.5 text-white/50 font-mono text-[12px]">[insert link]</span>
-              {" "}layer. The feed was not treated as promotional content, but
-              as a{" "}
-              <strong className="text-white/85">designed narrative surface</strong>
-              . Images were selected and sequenced to build metaphorical tension
-              around surveillance, identity, control, and instability, using motifs
-              such as fingerprint portraits, network diagrams, ocean and ship
-              imagery, lightning, and system-related symbols like the escape key.
-            </Body>
-            <Body dark>
-              Captions were intentionally cryptic and philosophical rather than
-              descriptive, allowing meaning to emerge through interpretation. In
-              some cases, even the first letters of captions were used to form
-              coded patterns, including references to Pandora, reinforcing the
-              sense that the system was structured and observant beneath the
-              surface.
-            </Body>
-            <div className="mt-4">
-              <MediaPlaceholder label="Instagram Video" sublabel="insert Instagram video" dark />
-            </div>
-          </div>
-
-          <Sub dark>Sonic &amp; Tonal Direction</Sub>
-          <Body dark>
-            Music also played an important role in shaping the project&apos;s
-            overall mood and direction. The tonal references guiding the digital
-            layer drew from cinematic and ambient sound worlds associated with
-            artists such as Trent Reznor and Atticus Ross, Sigur R&oacute;s, and
-            other emotionally textured composers. These references informed the
-            pace and emotional quality of the visual work, helping the team frame
-            the project less as a straightforward story and more as a carefully
-            tuned condition of perception.
-          </Body>
         </Reveal>
 
-        <Reveal container={scrollContainerRef}>
-          <Quote dark>
-            Across the project, the design approach remained centered on{" "}
-            <strong className="text-white/90 not-italic">restraint, ambiguity, and coherence</strong>.
-            Every decision — from captions, imagery, and sequencing to
-            interaction pacing and platform tone — was made to support the
-            project as a unified system, not simply a narrative artifact.
-          </Quote>
-        </Reveal>
+        <Reveal container={scrollContainerRef} className="mt-10">
+          <div className="flex flex-col gap-3">
 
-        <Reveal container={scrollContainerRef} className="mt-6">
-          <MediaPlaceholder label="Pinterest Video" sublabel="Pandora.Protocol Moodboard" dark />
-        </Reveal>
+            <MemberAccordion name="Sandra" role="Visual Direction, Instagram & Sonic Direction" dark>
+              <Sub dark>Visual Direction</Sub>
+              <Body dark>
+                A key part of this direction was shaped through Sandra&apos;s role in defining the project&apos;s <strong className="text-white/85">experience logic, narrative cohesion, and visual language</strong>. In the early stages, more literal visual directions were considered, including a direct &ldquo;Greek meets cyberpunk&rdquo; interpretation. However, that approach was ultimately set aside in favor of something more restrained, atmospheric, and psychologically charged.
+              </Body>
+              <Body dark>
+                The project moved toward a cinematic visual tone influenced by controlled tension, ambiguity, and subtle unease — less about obvious world-building and more about how unfamiliar systems feel when they are first encountered.
+              </Body>
 
-        <Reveal container={scrollContainerRef} className="mt-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <TeamPlaceholder name="Zora" context="insert Zora" dark />
-            <TeamPlaceholder name="Jingwen" context="insert Jingwen" dark />
-            <TeamPlaceholder name="Yamin" context="insert Yamin" dark />
+              <Sub dark>The Instagram Layer</Sub>
+              <div className="border border-white/8 rounded-md p-6 sm:p-8 mb-6 bg-white/[0.02]">
+                <Body dark>
+                  This approach became especially clear in the development of the Instagram{" "}
+                  <span className="inline-flex items-center gap-1.5 border-b border-dashed border-white/25 pb-0.5 text-white/50 font-mono text-[12px]">[insert link]</span>
+                  {" "}layer. The feed was not treated as promotional content, but as a{" "}
+                  <strong className="text-white/85">designed narrative surface</strong>. Images were selected and sequenced to build metaphorical tension around surveillance, identity, control, and instability, using motifs such as fingerprint portraits, network diagrams, ocean and ship imagery, lightning, and system-related symbols like the escape key.
+                </Body>
+                <Body dark>
+                  Captions were intentionally cryptic and philosophical rather than descriptive, allowing meaning to emerge through interpretation. In some cases, even the first letters of captions were used to form coded patterns, including references to Pandora, reinforcing the sense that the system was structured and observant beneath the surface.
+                </Body>
+                <div className="mt-4">
+                  <LazyVideo src="https://www.youtube.com/embed/-Fsc36v7ZY0" title="Instagram Video" />
+                </div>
+              </div>
+
+              <Sub dark>Sonic &amp; Tonal Direction</Sub>
+              <Body dark>
+                Music also played an important role in shaping the project&apos;s overall mood and direction. The tonal references guiding the digital layer drew from cinematic and ambient sound worlds associated with artists such as Trent Reznor and Atticus Ross, Sigur R&oacute;s, and other emotionally textured composers. These references informed the pace and emotional quality of the visual work, helping the team frame the project less as a straightforward story and more as a carefully tuned condition of perception.
+              </Body>
+
+              <Quote dark>
+                Across the project, the design approach remained centered on{" "}
+                <strong className="text-white/90 not-italic">restraint, ambiguity, and coherence</strong>.
+                Every decision — from captions, imagery, and sequencing to interaction pacing and platform tone — was made to support the project as a unified system, not simply a narrative artifact.
+              </Quote>
+
+              <LazyVideo src="https://www.youtube.com/embed/OzKXsLFm2RU" title="Pandora.Protocol Moodboard" />
+              <p className="text-[11px] font-mono text-white/30 mt-3">Pandora.Protocol Moodboard</p>
+            </MemberAccordion>
+
+            <MemberAccordion name="Zora" role="Design Contributions" dark>
+              <div className="py-4 flex items-center justify-center min-h-[100px]">
+                <span className="text-[12px] font-mono text-white/30">insert Zora</span>
+              </div>
+            </MemberAccordion>
+
+            <MemberAccordion name="Jingwen Han" role="Website Design Approach" dark>
+
+              {/* ── Digital Interface Direction ── */}
+              <Sub dark>Digital Interface Direction</Sub>
+              <Body dark>
+                A key part of this direction also became visible in the development of the project&apos;s website-based platforms, including the website, chatbot, webpage structure, and geolocation layer. Rather than treating the website as a conventional information site, Jingwen approached it as a <strong className="text-white/85">designed narrative interface</strong> — one that could guide users into the Pandora.Protocol system through <strong className="text-white/85">pacing, atmosphere, and controlled interaction</strong>.
+              </Body>
+              <Body dark>
+                The goal was not simply to present content, but to create the sense of entering an unfamiliar digital environment where interface cues, fragmented information, and system behavior all contributed to the narrative experience.
+              </Body>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 mb-4">
+                <div>
+                  <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                    <img src="/image/jingwen-placeholder-1.png" alt="Inspiration board" className="w-full h-full object-contain" />
+                  </div>
+                  <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 01 — Inspiration board exploring themes of surveillance, fragmentation, and digital unease.</p>
+                </div>
+                <div>
+                  <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                    <img src="/image/jingwen-placeholder-2.png" alt="Visual and colour exploration" className="w-full h-full object-contain" />
+                  </div>
+                  <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 02 — Early visual and colour exploration for the website&apos;s tonal direction.</p>
+                </div>
+              </div>
+
+              {/* spacer */}
+              <div className="h-px bg-white/5 my-10" />
+
+              {/* ── Visual & Structural Development ── */}
+              <Sub dark>Visual &amp; Structural Development</Sub>
+              <Body dark>
+                This approach shaped both the visual and structural development of the web layer. The website drew from archive, terminal, and system-record aesthetics, using restrained typography, binary code, and log-based language to create a sense of limited access and underlying system activity. Fragmented statements, surveillance-related imagery, and shifts between light and dark interface states were used to reinforce the project&apos;s themes of <strong className="text-white/85">secrecy, observation, and control</strong>.
+              </Body>
+
+              <div className="mt-10 mb-4">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mb-2.5">
+                  <img src="/image/jingwen-placeholder-3.png" alt="Website development process" className="w-full h-auto" />
+                </div>
+                <p className="text-[10px] font-mono text-white/45 mb-10">Fig 03 — Website development process showing page iteration, structural testing, and visual refinement.</p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+                      <img src="/image/jingwen-placeholder-5.gif" alt="Website loading sequence" className="w-full h-auto" />
+                    </div>
+                    <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 04 — Final website loading sequence introducing the system interface.</p>
+                  </div>
+                  <div>
+                    <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+                      <img src="/image/jingwen-placeholder-6.gif" alt="Website transition" className="w-full h-auto" />
+                    </div>
+                    <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 05 — Final website transition showing scale, pacing, and typography reinforcing the theme of machine control.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* spacer */}
+              <div className="h-px bg-white/5 my-10" />
+
+              {/* ── Chatbot & Geolocation ── */}
+              <Sub dark>Chatbot &amp; Geolocation Layer</Sub>
+              <Body dark>
+                The chatbot extended this logic by functioning not only as an interactive feature, but as a narrative touchpoint. Interaction cues such as &ldquo;Speak to Pandora,&rdquo; &ldquo;Awaiting Input,&rdquo; and &ldquo;connection fading&rdquo; helped frame the exchange as part of a larger unstable system rather than a standard chat interface.
+              </Body>
+              <Body dark>
+                The geolocation component further supported this digital layer by suggesting that Pandora existed beyond a single interface, reinforcing the impression of a wider distributed presence.
+              </Body>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10 mb-4">
+                <div>
+                  <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+                    <img src="/image/jingwen-placeholder-7.gif" alt="Chatbot interaction" className="w-full h-auto" />
+                  </div>
+                  <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 06 — Final chatbot interaction framed as part of the narrative system.</p>
+                </div>
+                <div>
+                  <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30">
+                    <img src="/image/jingwen-placeholder-4.png" alt="Mobile screens" className="w-full h-auto" />
+                  </div>
+                  <p className="text-[10px] font-mono text-white/45 mt-2.5">Fig 07 — Final mobile screens showing website, chatbot, and geolocation components.</p>
+                </div>
+              </div>
+
+              {/* spacer */}
+              <div className="h-px bg-white/5 my-10" />
+
+              {/* ── Closing ── */}
+              <Sub dark>Design Coherence</Sub>
+              <Quote dark>
+                Across this process, the design direction of the web-based platforms remained centered on atmosphere, restraint, and narrative cohesion. Every decision — from layout, logs, and screen pacing to interaction structure and interface tone — was made to support Pandora.Protocol as a unified digital experience rather than a standalone website artifact.
+              </Quote>
+
+              <div className="mt-6">
+                <a href="https://pandora-protocol.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-[13px] font-mono text-white/80 border border-white/25 bg-white/[0.06] px-6 py-3.5 rounded-md hover:bg-white/[0.12] hover:border-white/40 hover:text-white transition-all">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-60"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                  View Final Website
+                </a>
+              </div>
+            </MemberAccordion>
+
+            <MemberAccordion name="Yamin Cai" role="Technical Lead — AR & VR Design" dark>
+              {/* ── AR ── */}
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 mt-2 text-white/85">
+                AR — Augmented Reality
+              </h4>
+
+              <Sub dark>1. Building the Model</Sub>
+              <Body dark>
+                The AR component of Pandora.Protocol is a 3D model of the school building, accessible by scanning a QR code with any phone camera. The concept started with building a full architectural model in Unity including walls, classrooms, corridors, and furniture. The first version had exterior walls, but testing quickly revealed a problem: the outer shell blocked the entire interior view. Walls were stripped out and the model was rebuilt as an open structure so users could look directly into each room.
+              </Body>
+              <Body dark>
+                With no wall surfaces for textures, UV mapping and texture baking had to be handled manually for every object. After completing the model, specific classroom locations were not marked. Taking cues from Google Maps, red pin markers were placed on specific classrooms to indicate their exact locations within the building.
+              </Body>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-1.png" alt="3D classroom model in Unity" className="w-full h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-2.png" alt="Full building model - multiple rooms" className="w-full h-full object-contain" />
+                </div>
+              </div>
+
+              <Sub dark>2. Debugging</Sub>
+              <Body dark>
+                Getting the AR scanning to work without a dedicated app was the main challenge. The Unity AR package version was outdated and incompatible - upgrading it caused texture loss across the entire model, requiring manual corrections after every update. The final solution worked like a Russian nesting doll: the QR code on the sticker redirects to a GitHub page, which then loads the actual scannable AR model. It requires two scans instead of one, but works on any phone without downloading any app. The QR code was originally blue but changed to black and white after feedback that it did not match the sticker aesthetic.
+              </Body>
+
+              <Sub dark>3. Final Result</Sub>
+              <Body dark>
+                The completed AR experience connects the physical sticker touchpoint directly into a spatial 3D model of the school building. Users scan the QR code on the sticker, navigate to the GitHub-hosted page, and view the 3D model overlaid on the real world through their phone camera. Red pin markers identify specific classroom locations. The second touchpoint in the AR layer connects to the Pandora.Protocol experience itself.
+              </Body>
+              <div className="my-6">
+                <LazyVideo src="https://www.youtube.com/embed/VANF_cARpMw" title="AR Demo Video" />
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 mb-10">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-white/5 aspect-square flex items-center justify-center p-6">
+                  <img src="/image/yamin-placeholder-3.png" alt="QR code for AR access" className="max-w-full max-h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[9/16] sm:aspect-square flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-4.png" alt="AR model viewed on phone" className="h-full object-contain" />
+                </div>
+              </div>
+
+              {/* ── VR ── */}
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 text-white/85">
+                VR — Virtual Reality
+              </h4>
+
+              <Sub dark>1. Concept &amp; Inspiration</Sub>
+              <Body dark>
+                The decision to build the VR experience with no physical environment - no rooms, no objects, purely abstract visual effects - came from thinking about what AI actually feels like rather than what it looks like. The main visual references were immersive installations by TeamLab and data art by Ryoji Ikeda: spaces where you stop being an observer and become completely absorbed into the system. The absence of an exit button was intentional - once you enter, there is no way out, mirroring how AI has permanently embedded itself into daily life.
+              </Body>
+              <Body dark>
+                The effects were designed in four movements: lines rushing forward to create the sensation of entering something, shifting particle flows suggesting the space is alive, a black hole transition pulling deeper, and a field of digital data implying something everywhere and inescapable.
+              </Body>
+              <div className="grid grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-square flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-5.png" alt="VR FX scene — rain of lines" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-square flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-6.png" alt="VR FX scene — data field" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-square flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-7.png" alt="VR FX scene — black hole" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-square flex items-center justify-center">
+                  <img src="/image/yamin-placeholder-8.png" alt="VR FX scene — number field" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              <Sub dark>2. Houdini FX Build</Sub>
+              <Body dark>
+                All effects were built and rendered in Houdini. The project produced four final video files: SC001 rain of lines, SC001+SC002 slapcomp starburst rush, SC002 warp, and SC004+SC005 slapcomp black hole pulse. Each scene was a separate .hip file with simulation, render, and backup folders. The renders came out exactly as intended - high-contrast black and white, abstract enough to feel like data rather than anything physical.
+              </Body>
+
+              <Sub dark>3. Unity — Problem &amp; Final</Sub>
+              <Body dark>
+                The initial plan was to recreate the Houdini effects inside Unity using particles and code, with AI helping debug scripts. Rather than rebuilding the effects from scratch, the Houdini renders were imported directly as video files and played back using a custom FXVideoPlayer script. This preserved the exact visual quality of the original renders. The playback sequence runs SC001+SC002 starburst, SC001 rain, SC002 warp, then SC004+SC005 black hole, with smooth crossfade transitions. Additive blending was applied so black backgrounds disappear and only the bright effect elements remain visible, creating the sensation of floating effects with no environment at all.
+              </Body>
+              <div className="my-6">
+                <LazyVideo src="https://www.youtube.com/embed/w2oSG3wwqiw" title="Unity VR Playback Demo" />
+              </div>
+
+              <Sub dark>4. Deploying to Quest 2</Sub>
+              <Body dark>
+                Getting the effects onto the Oculus Quest 2 headset was the most technically demanding part of the project. The headset was borrowed from the school, and Meta only allows the original owner to enable developer mode - unlocking it required emailing the school technical support team and waiting for them to contact the manufacturer directly. Once developer mode was enabled, the Unity project could not access XR system settings due to a computer configuration issue. Native VR packaging kept producing a 2D window instead of a full immersive experience. After multiple failed attempts including force-packaging through CMD and writing Python scripts to configure XR settings, the approach shifted to WebXR.
+              </Body>
+              <Body dark>
+                The effects were deployed to GitHub Pages as a browser-based VR experience. When opened in the Quest browser and clicking Enter VR, the headset enters full immersive mode with the Houdini effects playing all around the viewer in 360 degrees. This solution preserved the exact visual quality of the original Houdini renders while achieving the full immersive experience the project required.
+              </Body>
+              <div className="my-6">
+                <LazyVideo src="https://www.youtube.com/embed/DI4VHsnx1Ig" title="Quest 2 WebXR Demo" />
+              </div>
+            </MemberAccordion>
+
           </div>
         </Reveal>
       </Section>
@@ -750,7 +959,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
                 key={ins.n}
                 className="border border-foreground/6 p-5 rounded-md"
               >
-                <p className="text-[10px] font-mono text-foreground/25 mb-2">
+                <p className="text-[10px] font-mono text-foreground/40 mb-2">
                   {ins.n}
                 </p>
                 <p className="text-[13px] font-medium text-foreground/80 mb-2">
@@ -1030,11 +1239,11 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
             <span className="text-[13px] font-medium text-foreground/65">
               Pandora.Protocol
             </span>
-            <span className="text-[11px] text-foreground/25 ml-3 font-mono">
+            <span className="text-[11px] text-foreground/40 ml-3 font-mono">
               Helix Storyworks
             </span>
           </div>
-          <div className="flex items-center gap-3 text-[10px] font-mono text-foreground/25">
+          <div className="flex items-center gap-3 text-[10px] font-mono text-foreground/40">
             <span>Sheridan College</span>
             <span>&middot;</span>
             <span>Interactive Narrative</span>
