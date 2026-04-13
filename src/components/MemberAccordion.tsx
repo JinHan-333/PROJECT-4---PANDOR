@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MemberAccordionProps {
@@ -19,6 +19,30 @@ export default function MemberAccordion({
   defaultOpen = false,
 }: MemberAccordionProps) {
   const [open, setOpen] = useState(defaultOpen);
+  const headerRef = useRef<HTMLButtonElement>(null);
+
+  const triggerResize = useCallback(() => {
+    // Tell Lenis to recalculate scroll dimensions
+    window.dispatchEvent(new Event("resize"));
+  }, []);
+
+  const handleToggle = useCallback(() => {
+    const willOpen = !open;
+    setOpen(willOpen);
+
+    if (willOpen) {
+      // Stagger resize calls to catch content as it renders
+      setTimeout(triggerResize, 50);
+      setTimeout(triggerResize, 400);
+      setTimeout(() => {
+        triggerResize();
+        headerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 450);
+    } else {
+      setTimeout(triggerResize, 50);
+      setTimeout(triggerResize, 400);
+    }
+  }, [open, triggerResize]);
 
   const borderColor = dark ? "border-white/8" : "border-foreground/8";
   const bg = dark ? "bg-white/[0.02]" : "bg-foreground/[0.015]";
@@ -30,11 +54,11 @@ export default function MemberAccordion({
   const iconColor = dark ? "text-white/30" : "text-foreground/30";
 
   return (
-    <div className={`border ${borderColor} rounded-lg overflow-hidden`}>
-      {/* Header — clickable */}
+    <div className={`border ${borderColor} rounded-lg`}>
       <button
-        onClick={() => setOpen(!open)}
-        className={`w-full flex items-center justify-between px-6 py-5 ${bg} ${hoverBg} transition-colors cursor-pointer`}
+        ref={headerRef}
+        onClick={handleToggle}
+        className={`w-full flex items-center justify-between px-6 py-5 ${bg} ${hoverBg} transition-colors cursor-pointer rounded-lg`}
       >
         <div className="flex items-center gap-4">
           <div
@@ -52,17 +76,15 @@ export default function MemberAccordion({
           </div>
         </div>
 
-        {/* Arrow */}
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25 }}
-          className={`text-[18px] ${iconColor}`}
+          className={`text-[18px] ${iconColor} flex-shrink-0`}
         >
           &#8964;
         </motion.span>
       </button>
 
-      {/* Content — collapsible */}
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -70,11 +92,10 @@ export default function MemberAccordion({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
+            style={{ overflow: "hidden" }}
+            onAnimationComplete={triggerResize}
           >
-            <div
-              className={`px-6 pb-8 pt-5 border-t ${borderColor}`}
-            >
+            <div className={`px-6 pb-8 pt-5 border-t ${borderColor}`}>
               {children}
             </div>
           </motion.div>

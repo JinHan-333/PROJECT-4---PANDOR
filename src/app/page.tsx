@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import MonitorFrame from "@/components/MonitorFrame";
 import LoadingScreen from "@/components/LoadingScreen";
 import CaseStudyContent from "@/components/CaseStudyContent";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import Lenis from "lenis";
 
 type AppState = "loading" | "content";
 
@@ -13,7 +13,40 @@ export default function Home() {
   const showContent = appState === "content";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useSmoothScroll(showContent, scrollContainerRef);
+  useEffect(() => {
+    if (!showContent || !scrollContainerRef.current) return;
+
+    const wrapper = scrollContainerRef.current;
+
+    const lenis = new Lenis({
+      wrapper,
+      content: wrapper,
+      duration: 1.6,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.7,
+      autoResize: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Listen for resize events (fired by accordions) to force Lenis to recalculate
+    const handleResize = () => lenis.resize();
+    window.addEventListener("resize", handleResize);
+
+    // Also periodically resize for dynamic content (images loading, etc.)
+    const interval = setInterval(() => lenis.resize(), 2000);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearInterval(interval);
+      lenis.destroy();
+    };
+  }, [showContent]);
 
   const handleLoadingComplete = useCallback(() => {
     setAppState("content");

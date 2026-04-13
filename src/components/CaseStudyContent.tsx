@@ -357,10 +357,44 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
               </Body>
             </MemberAccordion>
 
-            <MemberAccordion name="Zora" role="Role & Contributions">
-              <div className="py-4 flex items-center justify-center min-h-[100px]">
-                <span className="text-[12px] font-mono text-foreground/30">insert Zora</span>
-              </div>
+            <MemberAccordion name="Yiyi Yan" role="Physical Experience Designer">
+              <Body>
+                Within the course project, Yiyi was responsible for the <strong className="text-foreground/85">physical narrative entry layer</strong>, including the design and development of the poster, sticker system, and interactive box. Her contribution focused on translating abstract narrative themes into tangible, physical touchpoints that initiate user engagement.
+              </Body>
+              <Body>
+                In the early stage of Project 1, she also contributed to the development of character concepts, helping define visual and symbolic representations that supported the narrative foundation of Pandora.Protocol.
+              </Body>
+
+              <Sub>Course Project Role</Sub>
+              <Body>As a student on the project, Yiyi&apos;s responsibilities included:</Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Contributing to early concept development by designing and shaping character representations in Project 1</Bullet>
+                <Bullet>Designing the <strong className="text-foreground/85">poster</strong> as the primary visual entry point to capture attention and communicate the project&apos;s tone and themes</Bullet>
+                <Bullet>Developing the <strong className="text-foreground/85">sticker system</strong> with embedded QR codes to guide users from physical space into digital platforms</Bullet>
+                <Bullet>Creating and iterating on multiple visual directions to explore symbolism related to control, curiosity, and surveillance</Bullet>
+                <Bullet>Prototyping and refining the <strong className="text-foreground/85">physical box</strong> as an interactive narrative artifact with dual visual states</Bullet>
+                <Bullet>Structuring how physical elements connect to the overall transmedia system, including website, AR, and VR layers</Bullet>
+                <Bullet>Supporting user testing by observing how participants interact with physical artifacts and enter the narrative system</Bullet>
+                <Bullet>Iterating designs based on feedback to improve clarity, engagement, and interaction cues</Bullet>
+              </ul>
+              <Body>
+                A major part of her role was ensuring that the physical components did not function as isolated artifacts, but as intentional entry points that guide users into the broader Pandora.Protocol system.
+              </Body>
+
+              <Sub>Helix Storyworks Role</Sub>
+              <Body>
+                Within the pseudo production company, Helix Storyworks, Yiyi&apos;s role was framed as <strong className="text-foreground/85">Physical Experience Designer</strong>. In that context, she was responsible for:
+              </Body>
+              <ul className="mb-6 list-none p-0">
+                <Bullet>Translating narrative concepts into physical interaction design</Bullet>
+                <Bullet>Designing tangible artifacts that bridge real-world engagement with digital experiences</Bullet>
+                <Bullet>Exploring how material, form, and visual language can shape user perception and curiosity</Bullet>
+                <Bullet>Creating cohesive connections between physical touchpoints and digital narrative platforms</Bullet>
+                <Bullet>Supporting the integration of physical and digital layers within the overall transmedia system</Bullet>
+              </ul>
+              <Body>
+                This role emphasized the importance of physical interaction as the first point of contact within the narrative experience, setting the tone for user engagement across all platforms.
+              </Body>
             </MemberAccordion>
 
             <MemberAccordion name="Jingwen Han" role="Digital Experience Designer & Web Developer">
@@ -589,13 +623,188 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
               <p className="text-[11px] font-mono text-white/30 mt-3">Pandora.Protocol Moodboard</p>
             </MemberAccordion>
 
-            <MemberAccordion name="Zora" role="Design Contributions" dark>
-              <div className="py-4 flex items-center justify-center min-h-[100px]">
-                <span className="text-[12px] font-mono text-white/30">insert Zora</span>
+            <MemberAccordion name="Yiyi Yan" role="Physical Narrative Layer — Character, Poster, Sticker & Box" dark>
+              <Body dark>
+                The design approach for the physical narrative layer focused on creating tangible entry points that guide users from curiosity into the larger Pandora.Protocol system. Rather than treating physical artifacts as standalone visuals, each component was designed as an interactive trigger that initiates engagement and connects to digital and immersive platforms.
+              </Body>
+              <Body dark>
+                Across Projects 1, 2, and 3, the design process evolved from initial concept exploration and visual research into iterative development and final refinement. This progression reflects how narrative themes were translated into physical form through material, interaction, and visual language.
+              </Body>
+
+              {/* ── 1. Character ── */}
+              <div className="h-px bg-white/5 my-10" />
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 text-white/85">1. Character</h4>
+
+              <Sub dark>P1 — Inspiration &amp; Moodboard</Sub>
+              <Body dark>
+                The characters were developed through collage-based exploration using Pinterest references, where fragmented imagery, surveillance elements, and abstract compositions were combined to construct symbolic representations of system behavior, user identity, and spatial experience.
+              </Body>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mt-6 mb-8">
+                <img src="/image/zora-placeholder-1.png" alt="Character moodboard" className="w-full h-auto" />
               </div>
+
+              <Sub dark>Character 01 — Pandora</Sub>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mb-3 aspect-video">
+                <img src="/image/zora-placeholder-2.jpg" alt="Character 01 — Pandora" className="w-full h-full object-cover" />
+              </div>
+              <Body dark>
+                A fragmented, observing presence shaped through collage and distortion. Pandora is not a person, but a system that reflects, listens, and absorbs — existing as a mirror of the participant&apos;s thoughts and actions.
+              </Body>
+
+              <Sub dark>Character 02 — The Participant</Sub>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mb-3 aspect-video">
+                <img src="/image/zora-placeholder-3.jpg" alt="Character 02 — The Participant" className="w-full h-full object-cover" />
+              </div>
+              <Body dark>
+                A symbolic representation of the participant, positioned between curiosity and control. The character reflects a state of searching, where interaction becomes a way of understanding — and unknowingly, a form of submission.
+              </Body>
+
+              <Sub dark>Character 03 — The Space / Threshold</Sub>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mb-3 aspect-video">
+                <img src="/image/zora-placeholder-4.jpg" alt="Character 03 — The Space / Threshold" className="w-full h-full object-cover" />
+              </div>
+              <Body dark>
+                A transitional space that exists between physical reality and digital systems. Rather than a defined environment, it functions as a threshold — where fragmented information converges and the narrative begins to take control.
+              </Body>
+
+              <Sub dark>Character Development (Project 1)</Sub>
+              <Body dark>
+                The character system was developed through collage-based visual exploration, drawing from Pinterest references and abstract imagery. Rather than designing traditional characters, the process focused on creating symbolic representations that reflect system behavior, user identity, and spatial experience.
+              </Body>
+
+              {/* ── 2. Poster Design ── */}
+              <div className="h-px bg-white/5 my-10" />
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 text-white/85">2. Poster Design</h4>
+
+              <Sub dark>P1 — Inspiration &amp; Moodboard</Sub>
+              <Body dark>
+                The poster design in Project 1 started with exploring how to turn the narrative concept into a physical entry point. After developing the character system, the direction became clearer. Instead of showing something directly, the focus was on using a fragmented visual style to reflect the psychological and system-based feeling of Pandora.Protocol.
+              </Body>
+              <Body dark>
+                The design uses collage, broken information, and surveillance elements like eyes and screens to create a sense of curiosity and unease. Rather than explaining everything, the poster keeps things unclear to encourage users to explore and engage with the system.
+              </Body>
+              <div className="grid grid-cols-3 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-5.png" alt="Poster moodboard" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-6.png" alt="Poster moodboard" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-7.png" alt="Poster moodboard" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              <Sub dark>P2 — Early Design</Sub>
+              <Body dark>
+                In Project 2, the poster layout was developed using a &ldquo;Z&rdquo; composition to guide the viewer&apos;s attention across the design. Experimentation included creating a fragmented &ldquo;ENTER&rdquo; element using AI, combining distortion with visual elements that suggest control and unease. Multiple layout variations were tested to explore how composition, typography, and imagery could work together to strengthen the overall narrative feeling.
+              </Body>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-8.jpg" alt="Poster P2 iteration" className="w-full h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-9.png" alt="Poster P2 iteration" className="w-full h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-10.png" alt="Poster P2 iteration" className="w-full h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-video flex items-center justify-center">
+                  <img src="/image/zora-placeholder-11.png" alt="Poster P2 iteration" className="w-full h-full object-contain" />
+                </div>
+              </div>
+
+              <Sub dark>P3 — Final Design</Sub>
+              <Body dark>
+                The final poster refines the earlier composition into a more cohesive and controlled visual system. A strong central focus, combined with fragmented typography and layered imagery, reinforces the themes of surveillance, control, and psychological tension. The integration of QR code interaction transforms the poster from a static visual into an active entry point, inviting users to scan, engage, and enter the narrative experience.
+              </Body>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mt-6 mb-8 max-w-[500px]">
+                <img src="/image/zora-placeholder-12.png" alt="Final poster design" className="w-full h-auto" />
+              </div>
+
+              {/* ── 3. Sticker ── */}
+              <div className="h-px bg-white/5 my-10" />
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 text-white/85">3. Sticker</h4>
+
+              <Sub dark>P2 — Inspiration &amp; Moodboard</Sub>
+              <Body dark>
+                The early sticker exploration draws from collage-based visual references, combining surreal elements, symbolic graphics, and fragmented imagery to establish an expressive visual language. At this stage, the focus was on experimenting with strong contrast, graphic icons, and layered compositions, aiming to create visuals that feel visually engaging while carrying a subtle sense of unease.
+              </Body>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[4/3] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-13.png" alt="Sticker moodboard" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[4/3] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-14.png" alt="Sticker moodboard" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              <Sub dark>P3 — Process &amp; Final Design</Sub>
+              <Body dark>
+                In the final stage, the design direction shifts toward a more structured and functional approach, inspired by warning labels and surveillance systems. The sticker adopts a clear visual hierarchy and controlled layout to enhance readability and authority, reinforcing the concept of observation and system control. By integrating a QR code as the main interaction point, the design not only attracts attention but also actively guides users to scan and enter the Pandora.Protocol experience.
+              </Body>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[4/3] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-15.jpg" alt="Sticker process" className="w-full h-full object-contain" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[4/3] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-16.png" alt="Sticker final design" className="w-full h-full object-contain" />
+                </div>
+              </div>
+
+              {/* ── 4. Box ── */}
+              <div className="h-px bg-white/5 my-10" />
+              <h4 className="text-[clamp(17px,2vw,22px)] font-semibold tracking-tight leading-tight mb-6 text-white/85">4. Box</h4>
+
+              <Sub dark>P1 — Inspiration &amp; Moodboard</Sub>
+              <Body dark>
+                The initial concept explores a linear, three-dimensional structure, aiming to combine string and box forms into a physical composition. This direction focuses on creating an interactive object, where tension, connection, and spatial layering guide user engagement and narrative experience.
+              </Body>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mt-6 mb-8">
+                <img src="/image/zora-placeholder-17.png" alt="Box moodboard" className="w-full h-auto" />
+              </div>
+
+              <Sub dark>P2 — Material Preparation</Sub>
+              <Body dark>
+                Due to the difficulty of sourcing a suitable box, the design adapted by repurposing a shipping box as the base structure. Black foam board was used to recreate a custom die-cut form, while additional materials such as yarn, wire, and pins were selected to support the intended layered and tension-based construction.
+              </Body>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mt-6 mb-8">
+                <img src="/image/zora-placeholder-18.jpg" alt="Box material preparation" className="w-full h-auto" />
+              </div>
+
+              <Sub dark>P3 — Fabrication Process</Sub>
+              <Body dark>
+                The final box was developed through a fully handmade process, starting from cutting and shaping the foam board to create custom openings and layered surfaces. Visual elements were manually drawn and assembled, followed by precise positioning and adhesion to build a cohesive composition. Pins, yarn, and wire were then integrated to construct a tension-based structure, forming both a visual network and an interactive mechanism that connects different parts of the box.
+              </Body>
+              <div className="grid grid-cols-2 gap-3 mt-6 mb-8">
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[3/2] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-19.jpg" alt="Box fabrication" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[3/2] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-20.jpg" alt="Box fabrication" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[3/2] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-21.jpg" alt="Box fabrication" className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 aspect-[3/2] flex items-center justify-center">
+                  <img src="/image/zora-placeholder-22.jpg" alt="Box fabrication" className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              <Sub dark>P3 — Final Design &amp; Interaction</Sub>
+              <Body dark>
+                The final design introduces a zig-zag (&ldquo;Z&rdquo;-shaped) interactive mechanism that guides users through a hidden opening system. By following the tensioned string path and identifying subtle visual cues, users are required to actively engage in order to unlock the box, reinforcing a sense of curiosity and discovery. This interaction transforms the box from a static object into a narrative trigger, where physical action becomes part of the storytelling process.
+              </Body>
+              <Body dark>
+                The box is designed to contain the VR headset, acting as a transition point from physical interaction to immersive digital experience. Its dual-sided design — one unsettling and chaotic, the other calm and minimal — symbolizes the dual nature of the Pandora concept. Rather than presenting a fixed meaning, the outcome is shaped by the participant&apos;s choices, suggesting that the &ldquo;good&rdquo; or &ldquo;bad&rdquo; of the Pandora box is determined through user engagement.
+              </Body>
+              <div className="rounded-lg overflow-hidden border border-white/10 bg-black/30 mt-6 mb-6">
+                <img src="/image/zora-placeholder-23.jpg" alt="Final box design" className="w-full h-auto" />
+              </div>
+              <LazyVideo src="https://www.youtube.com/embed/FZArj4ykdAQ" title="Final Design & Interaction" />
             </MemberAccordion>
 
-            <MemberAccordion name="Jingwen Han" role="Website Design Approach" dark>
+            <MemberAccordion name="Jingwen Han" role="Website Design, Chatbot, Geolocation & Case Study Implementation" dark>
 
               {/* ── Digital Interface Direction ── */}
               <Sub dark>Digital Interface Direction</Sub>
