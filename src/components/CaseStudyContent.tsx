@@ -171,7 +171,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
       <section className="min-h-[85vh] sm:min-h-screen flex flex-col justify-end px-[5%] sm:px-[8%] pb-12 sm:pb-20 pt-16">
         <Reveal container={scrollContainerRef}>
           <p className="text-[10px] font-mono tracking-[0.3em] text-foreground/30 uppercase mb-6">
-            Case Study — Helix Storyworks — 2025
+            Case Study — Helix Storyworks — 2026
           </p>
         </Reveal>
 
@@ -320,7 +320,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
         <Reveal container={scrollContainerRef}>
           <div className="flex flex-col gap-3">
 
-            <MemberAccordion name="Sandra" role="Creative Director & Executive Producer">
+            <MemberAccordion name="Sandra Krcmar" role="Creative Director & Executive Producer">
               <Body>
                 Within the course project, Sandra took on the role of <strong className="text-foreground/85">team lead and project manager</strong>, helping shape both the direction of the concept and the structure needed to move it forward. Her contribution sat at the intersection of <strong className="text-foreground/85">creative leadership, narrative development, and systems thinking</strong>.
               </Body>
@@ -583,7 +583,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
         <Reveal container={scrollContainerRef} className="mt-10">
           <div className="flex flex-col gap-3">
 
-            <MemberAccordion name="Sandra" role="Visual Direction, Instagram & Sonic Direction" dark>
+            <MemberAccordion name="Sandra Krcmar" role="Visual Direction, Instagram & Sonic Direction" dark>
               <Sub dark>Visual Direction</Sub>
               <Body dark>
                 A key part of this direction was shaped through Sandra&apos;s role in defining the project&apos;s <strong className="text-white/85">experience logic, narrative cohesion, and visual language</strong>. In the early stages, more literal visual directions were considered, including a direct &ldquo;Greek meets cyberpunk&rdquo; interpretation. However, that approach was ultimately set aside in favor of something more restrained, atmospheric, and psychologically charged.
@@ -595,9 +595,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
               <Sub dark>The Instagram Layer</Sub>
               <div className="border border-white/8 rounded-md p-6 sm:p-8 mb-6 bg-white/[0.02]">
                 <Body dark>
-                  This approach became especially clear in the development of the Instagram{" "}
-                  <span className="inline-flex items-center gap-1.5 border-b border-dashed border-white/25 pb-0.5 text-white/50 font-mono text-[12px]">[insert link]</span>
-                  {" "}layer. The feed was not treated as promotional content, but as a{" "}
+                  This approach became especially clear in the development of the Instagram layer. The feed was not treated as promotional content, but as a{" "}
                   <strong className="text-white/85">designed narrative surface</strong>. Images were selected and sequenced to build metaphorical tension around surveillance, identity, control, and instability, using motifs such as fingerprint portraits, network diagrams, ocean and ship imagery, lightning, and system-related symbols like the escape key.
                 </Body>
                 <Body dark>
@@ -605,6 +603,12 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
                 </Body>
                 <div className="mt-4">
                   <LazyVideo src="https://www.youtube.com/embed/-Fsc36v7ZY0" title="Instagram Video" />
+                </div>
+                <div className="mt-4">
+                  <a href="https://youtu.be/-Fsc36v7ZY0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-[13px] font-mono text-white/80 border border-white/25 bg-white/[0.06] px-6 py-3.5 rounded-md hover:bg-white/[0.12] hover:border-white/40 hover:text-white transition-all">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-60"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                    View Instagram Video
+                  </a>
                 </div>
               </div>
 
@@ -621,6 +625,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
 
               <LazyVideo src="https://www.youtube.com/embed/OzKXsLFm2RU" title="Pandora.Protocol Moodboard" />
               <p className="text-[11px] font-mono text-white/30 mt-3">Pandora.Protocol Moodboard</p>
+
             </MemberAccordion>
 
             <MemberAccordion name="Yiyi Yan" role="Physical Narrative Layer — Character, Poster, Sticker & Box" dark>
@@ -1457,7 +1462,7 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
             <span>&middot;</span>
             <span>Interactive Narrative</span>
             <span>&middot;</span>
-            <span>2025</span>
+            <span>2026</span>
           </div>
         </div>
       </footer>
