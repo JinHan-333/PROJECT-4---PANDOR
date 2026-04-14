@@ -621,9 +621,9 @@ export default function CaseStudyContent({ scrollContainerRef }: Props) {
               <p className="text-[11px] font-mono text-white/30 mt-3">Pandora.Protocol Moodboard</p>
 
               <div className="mt-6">
-                <a href="https://youtu.be/-Fsc36v7ZY0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-[13px] font-mono text-white/80 border border-white/25 bg-white/[0.06] px-6 py-3.5 rounded-md hover:bg-white/[0.12] hover:border-white/40 hover:text-white transition-all">
+                <a href="https://www.instagram.com/pandora.protocol/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-[13px] font-mono text-white/80 border border-white/25 bg-white/[0.06] px-6 py-3.5 rounded-md hover:bg-white/[0.12] hover:border-white/40 hover:text-white transition-all">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-60"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-                  View Instagram Video
+                  View Instagram
                 </a>
               </div>
             </MemberAccordion>
